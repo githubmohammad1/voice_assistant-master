@@ -1,7 +1,4 @@
-// import 'package:allen/feature_box.dart';
 
-
-// import 'package:animate_do/animate_do.dart';
 import 'package:allen/model/chatUserModel.dart';
 import 'package:allen/secren/chatscreen.dart';
 import 'package:flutter/material.dart';
@@ -25,16 +22,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-final now2 = DateTime.now();
+int chat_id=1;
   List<ChatUsers> chatUsers = [
 ChatUsers(name:"mohamma",time:"${DateTime.now()}",chat_id: 1)
 
   ];
-  List<ConversationList> conversationlist = [
-ConversationList(question:"",answer:"hi",chat_id:0,username: "mohammad")
 
-  ];
-void addChatUser( String name, String messageText, String time, int chat_id) {
+void addChatUser( String name, String time,) {
   final newChatUser = ChatUsers(
     chat_id:chat_id+1 ,
     name: name,
@@ -46,23 +40,8 @@ void addChatUser( String name, String messageText, String time, int chat_id) {
     chatUsers.add(newChatUser);
   });
 }
-void addconversation( String answer, String question, int chat_id) {
-  final newconversation= ConversationList(
-    username: "mohammad",
-    answer: answer,
-    question: question,
-    chat_id:chat_id,
-  );
-
-  setState(() {
-   conversationlist.add(newconversation);
-  });
-}
 
 
-
-int number_of_chat=1;
-  DateTime now=DateTime.now();
   @override
   void initState() {
     super.initState();
@@ -75,27 +54,27 @@ int number_of_chat=1;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,
-          title: Text(
+          title: const Text(
             "Telegram",
             style: TextStyle(color: Colors.black),
           ),
-          actions: [Icon(Icons.search)],
+          actions: [const Icon(Icons.search)],
         ),
         body: ListView.builder(
             itemCount:chatUsers.length ,
             itemBuilder: (BuildContext context, int index,) {
           final conversationId = index + 1; // رقم المحادثة (يبدأ من 1)
-          // final conversationName = 'محادثة $conversationId'; 
+          
               return ListTile(
                 onTap: () { 
                   _navigateToConversationPage(conversationId) ;              
 
                 },
-                leading: CircleAvatar(
-                  child: FlutterLogo(),
+                leading: const CircleAvatar(
                   radius: 25,
+                  child: FlutterLogo(),
                 ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +83,7 @@ int number_of_chat=1;
                     Text(
                       chatUsers[index].time,
                       
-                      style: TextStyle(color: Colors.grey, fontSize: 15),
+                      style: const TextStyle(color: Colors.grey, fontSize: 15),
                     )
                   ],
                 ),
@@ -118,15 +97,15 @@ int number_of_chat=1;
               );
             }),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {print("add chat pleas");
+          onPressed: () {print("add chat sucsecfully");
 final now = DateTime.now();
-addChatUser("mohammad2","wlekom","$now",0);
+addChatUser("mohammad","$now");
 
      
 
 
 },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
         //////////////////////
 
