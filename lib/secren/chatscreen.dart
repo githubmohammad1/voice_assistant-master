@@ -1,5 +1,5 @@
 
-import 'package:allen/model/chatUserModel.dart';
+
 import 'package:allen/secren/signin.dart';
 import 'package:allen/pallete.dart';
 import 'package:animate_do/animate_do.dart';
@@ -44,10 +44,10 @@ class _ChatscreenState extends State<Chatscreen> {
   int delay = 200;
   final TextEditingController _messageController = TextEditingController();
  
-  List<ChatUsers> chatUsers = [];
+  // List<ChatUsers> chatUsers = [];
 List m=[];
 
-List<Conversation> conversation=[];
+// List<Conversation> conversation=[];
 
 
  Future<void> _sendMessage() async {
@@ -60,20 +60,13 @@ List<Conversation> conversation=[];
          generateBotReply(message).then((value) {
          setState((){});
 m.add('bot:$value');
-          Conversation newConversation = Conversation(question:message,                                                                                            answer:value);
-                        conversation.add(newConversation);});
+         });
           m.add('you: $message');
          
           _messageController.clear();
 });
 
 
-  //     for (var conversation in conversation) {
-  //   print("Question: ${conversation.question}");
-  //   print("Answer: ${conversation.answer}");
-  //   print("---------------");
-  // }
-   
 
         
 }   
@@ -105,9 +98,9 @@ Future fetchConversations(int i) async {
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
 var mylistconversation= jsonDecode(response.body);
-// Conversation newConversation1 = Conversation(question:"question", answer:"answer");
+
   for (final item in mylistconversation) {
-    Conversation newConversation = Conversation(question:item['question'], answer:item['answer']);
+   
     // print(item['question']);
     // print(item['answer']);
    m.add(item['question']);
@@ -116,7 +109,7 @@ setState(() {
 
 
 m.add(item['answer']);
- conversation.add(newConversation);
+
        });
   
   
@@ -161,13 +154,6 @@ WidgetsBinding.instance.addPostFrameCallback((_){
 });
 
  
-print("------------");
-print(id);
-
-  
- print("init state");
-
- 
   }
 
 
@@ -195,7 +181,7 @@ print(id);
         ),
         actions:[IconButton(
           onPressed:(){Navigator.pushNamed(context,signinscreen.screenrout);
-          // print(conversationId);
+          
           }
 , icon:const Icon(Icons.add),
         ),
@@ -210,18 +196,10 @@ print(id);
         children: [
     Expanded(
       child: ListView.builder(
-    //        print("Question: ${conversation.question}");
-    // print("Answer: ${conversation.answer}");
+  
         reverse:false, // يعكس ترتيب الرسائل ليبدأ من الأسفل
-        itemCount: m.length,//conversation.length,//_messages.length,
+        itemCount: m.length,
         itemBuilder: (context, index,) {
-    // final conversation = _conversations[index];
-
-// print(posts[index]["question"].runtimeType);
-
-    
-     
-      print("--------------------------- $index");
 
     return Padding(
       padding:index % 2==1 ?
@@ -234,19 +212,10 @@ print(id);
             Colors.red:
             Colors.amber,
              borderRadius:BorderRadius.circular(15)),
-        child: Text(m[index])//conversation[index].question):Text(conversation[index].answer)//posts[index]["question"])//conversation.question),
+        child: Text(m[index])
       ),
     );
-
-
-
-
-
-
-
-
-  
-          
+ 
         },
       ),
     ),
@@ -293,9 +262,10 @@ print(id);
                   final speech = await openAIService.chatGPTAPI(lastWords);
                   
                   if (lastWords.isNotEmpty) {
-              Conversation newConversation = Conversation(question:speech, answer:lastWords);
+              // Conversation newConversation = Conversation(question:speech, answer:lastWords);
           // setState((){});
-       setState((){   conversation.add(newConversation);});
+       setState((){  m.add(lastWords);
+                    m.add(speech);                });
               
                                            };
 
