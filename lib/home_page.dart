@@ -39,6 +39,7 @@ void addChatUser( String name, String time,) {
   setState(() {
     chatUsers.add(newChatUser);
   });
+  chat_id+chat_id+1;
 }
 
 
