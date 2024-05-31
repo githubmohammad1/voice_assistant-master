@@ -1,0 +1,32 @@
+
+
+
+http://127.0.0.1:8000/question
+
+router.register('question', QuestionViewSet)#           تستخد للإظهار قائمة بالرسائبل السابقة  
+
+
+
+        model = User
+        fields = ( 'id',
+        'username',
+         'password',
+         'email')
+        extra_kwargs = {'password': 
+        {'write_only': True, 
+        'required': True},
+        'email': { 'required': True}}
+
+
+router.register('users__register', UsersRegister)#                   تسجيل مستخدم جديد
+http://127.0.0.1:8000/users__register
+
+
+urlpatterns = [
+    path('', include(router.urls)),
+    path('add',addquestion),#                               معالجة السؤال
+    path("test",test_flutterapp),
+    path("login",login),#                          تسسسسسسسسسسسسسسسسجيييييييييييييلل الدخوووووووووووول
+
+
+]

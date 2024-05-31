@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "287287918884",
+    "project_id": "nativbot",
+    "storage_bucket": "nativbot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287287918884:android:2ed995f94eda32a6d133b1",
+        "android_client_info": {
+          "package_name": "nativbot.allen.allen.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuYNfDb6Fd3WC_6hoITpzF0YywGEk_Ysw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
